@@ -1,0 +1,90 @@
+
+<!-- Copyright 2014 Intel Corporation, All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the"License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ --> 
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "OSD Status" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=cluster.title %}
+  <!-- <link href="{{ STATIC_URL }}dashboard/css/common.css" rel="stylesheet"> -->
+  <link href="{{ STATIC_URL }}dashboard/css/osdstatus.css" rel="stylesheet">
+{% endblock page_header %}
+
+{% block main %}
+   <div class="vsm-summary" >
+    <h3 class="table_title">OSD Summary</h3>
+    <div class = "vsm-summary-content">
+      <div class="form-group">
+        <label class="control-label">Osdmap Epoch</label>
+        <label id ="lblEpoch" class="control-label">--</label>
+      </div>
+      <div class="form-group">
+        <label class="control-label">OSDs Total </label>
+        <label id ="lblTotal" class="control-label">--</label>
+      </div>
+      <div class="form-group">
+        <label class="control-label">OSDs In</label>
+        <label id ="lblIn" class="control-label">--</label>
+      </div>
+      <div class="form-group">
+        <label class="control-label">OSDs Up</label>
+        <label id ="lblUp" class="control-label">--</label>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Last Updated</label>
+        <label id ="lblUpdate" class="control-label">--</label>
+      </div>
+    </div>
+  </div> 
+
+  <!-- <div style="clear:left"></div>  -->
+
+  {% csrf_token %}
+  {{ table.render }}
+
+
+<nav style="margin-left:auto;margin-right:auto">
+       <ul class="pagination">
+       <li id="liPrevious">
+          <a id="linkPrevious" href="#" aria-label="Previous" >
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+       </li>
+      <!--Page Link-->
+       <li id="liNext" >
+         <a id="linkNext"  href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+         </a>
+       </li>
+       </ul>
+</nav>
+
+<input id="hfPageIndex" type="hidden" />
+<input id="hfPageCount" type="hidden" />
+<input id="hfPagerIndex" type="hidden" />
+<input id="hfPagerCount" type="hidden" />
+
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src='{{ STATIC_URL }}dashboard/js/osdstatus.js' type='text/javascript' charset='utf-8'></script>   
+
+
+{% endblock %}
+

@@ -1,0 +1,72 @@
+
+<!-- Copyright 2014 Intel Corporation, All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the"License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ --> 
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Storage Group Status" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=cluster.title %}
+  <link href="{{ STATIC_URL }}dashboard/css/storagegroupstatus.css" rel="stylesheet">
+{% endblock page_header %}
+
+{% block main %}
+  <div id="divPieCharts" class="sgs-block" style="min-height: 220px;">
+    <h3 class="table_title">Threshold</h3>
+    <div id="divPieChartsContent"></div>
+  </div>  
+
+  <div id="divStandardSettings" class="sgs-block" style="height: 80px;">
+    <h3 class="table_title">Capacity Warning Thresholds</h3>
+    <div id="divStandardSettingsContent">
+      <table id="tSettings">
+        <tr>
+          <td>
+            <label>Storage Group Near Full:</label>
+            <span>{{ settings.storage_group_near_full_threshold}}</span>
+          </td>
+          <td>
+            <label>Storage Group Full:</label>
+            <span>{{ settings.storage_group_full_threshold }}</span>
+          </td>
+          <td>
+            <label>Ceph OSD Near Full:</label>
+            <span>{{ settings.ceph_near_full_threshold}}</span>
+          </td>
+          <td>
+            <label>Ceph OSD Full:</label>
+            <span>{{ settings.ceph_full_threshold}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  {{ table.render }}
+  
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}lib/echarts.js"></script>
+    <script src="{{ STATIC_URL }}dashboard/js/storagegroupstatus.js"></script> 
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+{% endblock %}
+

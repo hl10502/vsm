@@ -1,0 +1,127 @@
+#divFramework{
+	width: 100%;
+	overflow: hidden;
+}
+
+#divCrushmap{
+	float: left;
+	width: 25%;
+	height: 740px;
+	border:1px solid #ccc;
+	overflow: auto;
+}
+
+
+#divStorageGroupTable{
+	width: 70%;
+	float: left;
+	margin-left: 30px;
+	height: 740px;;
+	overflow-y:auto;
+}
+
+#divStorageGroupForm{
+	width: 70%;
+	float: left;
+	margin-left: 10px;
+	height: 740px;;
+	overflow-y:auto;
+}
+
+#divBaseForm{
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+#divStorageGroupFormLeft{
+	float: left;
+	width: 300px;
+	/*border:1px solid #ccc;*/
+}
+
+#divStorageGroupFormRight{
+	margin-left: 20px;
+	float: left;
+	width: 300px;
+	/*border:1px solid #ccc;*/
+}
+
+#divTakeFrom{
+	width: 650px;
+	margin-top: 10px;
+	max-height: 450px;
+	overflow-y:auto;
+	/*border:1px solid #ccc;*/
+}
+
+#divTakeList{
+	height: 150px;
+	/*border:1px solid #ccc;*/
+	overflow-y:auto;
+}
+
+#divFormOptions{
+	width: 650px;
+	margin-top: 20px;
+	padding-right: 10px;
+}
+
+.control-group {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.marker-icon{
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+
+.take-right span{
+	width: 20px;
+}
+
+.take-right span:hover{
+	cursor: pointer;
+	color: #337ab7;
+}
+
+#tTakeList{
+	width: 100%;
+}
+
+.tr-take{
+	border-bottom: 1px solid #ccc;
+	height: 40px;
+}
+
+.take-num input{
+	width: 150px;
+}
+
+.take-type select{
+	width: 150px;
+}
+
+.glyphicon{
+	cursor: pointer;
+}
+
+#btnCancel{
+	background-color: #ccc;
+	padding: 6px 14px;
+}
+
+.required-star{
+	content: "*";
+	font-weight: bold;
+	line-height: 0;
+	padding-left: 4px;
+	color:#428bca;
+}
+
+.tree-marker{
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}

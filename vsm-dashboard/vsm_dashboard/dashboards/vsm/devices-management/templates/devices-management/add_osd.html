@@ -1,0 +1,186 @@
+
+<!-- Copyright 2014 Intel Corporation, All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the"License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ --> 
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Add New OSD" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Add New OSD") %}
+  <link href="{{ STATIC_URL }}dashboard/css/addosd.css" rel="stylesheet">
+{% endblock page_header %}
+
+{% block main %}
+
+{% csrf_token %}
+
+<div id="divSelectServer">
+  <div class="control-group required">
+    <label id="lblServer" >Select Server</label>
+    <select id="selServer" class="form-control" style="width: 342px;" onchange="ChangeServer()">
+      {% for server in servers %}
+        {%if init_service_id == server.service_id %}
+          <option selected="selected" value = "{{server.service_id}}" node-id = "{{server.id}}" >{{server.host}}</option>
+        {%else%}
+           <option value = "{{server.service_id}}" node-id = "{{server.id}}" >{{server.host}}</option>
+        {%endif%}
+      {% endfor %}
+    </select>
+  </div>
+</div>
+
+<div id="divAddOSDForm">
+  <div class="left">
+      <div class="control-group required">
+        <label >Journal Device :</label>
+        <span id="lblJournalDeviceHelp" class="form-required">*</span>
+        <div class="input" style="position: relative;width: 342px;height: 40px;">
+          <select id="selJournalDevice"  class="form-control" style="z-index:88;" onchange="SelectDevice('journal',this.value)">
+            {% for path in available_disks %}
+                <option value="{{path}}">{{path}}</option>
+            {%endfor %}
+          </select>
+          <input id="txtJournalDevice" class="form-control" style="z-index:99;position: absolute;width: 320px;height: 30px;top: 1px;left: 2px;border: none;" type="text" value="" >
+        </div>
+      </div>
+      <div class="control-group required">
+        <label >Storage Group :</label>
+        <span class="form-required">*</span>
+        <div class="input">
+          <select id="selStorageGroup" class="form-control">
+            {% for sg in storage_group %}
+               <option value = "{{sg.id}}">{{sg.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+  </div>
+  <div class="right">
+      <div class="control-group required">
+        <label >Data Device :</label>
+        <span id="lblDataDeviceHelp" class="form-required">*</span>
+        <div class="input" style="position: relative;width: 342px;height: 40px;">
+            <select id="selDataDevice"  class="form-control" style="z-index:88;" onchange="SelectDevice('data',this.value)">
+                {% for path in available_disks %}
+                <option value="{{path}}">{{path}}</option>
+                {%endfor %}
+            </select>
+          <input id="txtDataDevice" class="form-control" style="z-index:99;position: absolute;width: 320px;height: 30px;top: 1px;left: 2px;border: none;" type="text" value="" >
+        </div>
+      </div>
+
+       <div class="control-group required">
+        <label >OSD Location :</label>
+        <span class="form-required">*</span>
+        <div class="input">
+          <select id="selOSDLocation" class="form-control">
+            {% for location in osd_location %}
+               <option value = "{{location.id}}">{{location.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+       <div class="control-group  required">
+        <label >Weight :</label>
+        <span class="form-required">*</span>
+        <div class="input">
+          <input id="txtWeight" class="form-control" type="text" value="" >
+        </div>
+      </div>
+  </div>
+  <div id="divFormOptions" class="vsm-options-bar">
+    <button id="btnAddOSD" class="btn btn-primary" onclick="CheckOSDForm()">Add</button>
+
+
+<!--this form for upload the file-->
+<form id="fUpload" method="post" class="form-inline" enctype="multipart/form-data" action="/dashboard/vsm/devices-management/add_new_osd/" >
+    <input type="hidden" name="csrfmiddlewaretoken" value="{% csrf_token %}"/>
+    <a id="linkUploadfile" href="#" class="file btn btn-primary">
+      {{upload_file}}
+      <span>Batch Import OSD</span>
+    </a>    
+  </div>
+</div>
+
+<div id="divFileUpload" style="display:none">
+  <span id="lblFileNameMark">file name:</span>
+  <span id="lblFileName"></span>
+  <button id="btnPreview" class="btn btn-primary">Preview</button>
+</div>
+
+</form>
+
+
+<div id="divAddOSDTable">
+   <table id="tOSDList" class="table table-bordered table-striped datatable">
+    <thead>
+      <tr>
+        <th  class="normal_column hidden"></th>
+        <th  class="normal_column">Server</th>
+        <th  class="normal_column">Weight</th>
+        <th  class="normal_column">Storage Group</th><th  class="normal_column">OSD Location</th>
+        <th  class="normal_column">Journal Device</th>
+        <th  class="normal_column">Data Device</th>      
+        <th  class="normal_column">Action</th>
+      </tr>
+    </thead>
+
+    <tbody id="tbOSDList">
+      {%if osd_list and osd_list|length > 0 %}
+            {% for osd in osd_list %}
+              <tr class="osd-item">
+                  <td class="sortable normal_column _node_id hidden"></td>
+                  <td class="sortable normal_column server_name">{{osd.server_name }}</td>
+                  <td class="sortable normal_column weight">{{ osd.weight }}</td>
+                  <td class="sortable normal_column sg_name">{{ osd.sg_name }}</td>
+                  <td class="sortable normal_column location">{{ osd.location }}</td>
+                  <td class="sortable normal_column journal">{{osd.journal}}</td>
+                  <td class="sortable normal_column device">{{ osd.data }}</td>
+                  <td class="sortable normal_column">
+                    <button class="btn btn-danger" onclick="RemoveOSD(this)">Remove</button>
+                  </td>
+              </tr>
+            {% endfor %}
+        {%else%}
+          <tr id="trEmptyRow" class="odd empty">
+            <td colspan="8">No items to display.</td>
+          </tr>
+        {%endif%}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="8">
+          <span class="table_count"></span>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+<div>
+
+<div id="divFormOptions" class="vsm-options-bar">
+  <button id="btnSubmit" class="btn btn-primary" onclick="AddOSD()">Submit</button>
+{#  <button id="btnReset" class="btn btn-default" onclick="ResetOSD()">Reset</button>#}
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src='{{ STATIC_URL }}dashboard/js/addosd.js' type='text/javascript' charset='utf-8'></script>
+{% endblock %}
+

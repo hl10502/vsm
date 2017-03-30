@@ -1,0 +1,92 @@
+
+<!-- Copyright 2014 Intel Corporation, All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the"License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Manage Devices" %}{% endblock %}
+
+{% block page_header %}
+    {% include "horizon/common/_page_header.html" with title=_("Manage Devices") %}
+    <link href="{{ STATIC_URL }}dashboard/css/devicemgmt.css" rel="stylesheet">
+{% endblock page_header %}
+
+{% block main %}
+    {{ table.render }}
+     <div id="divOSDInfo" style="display:none">
+            <div >
+                <!-- some messages display here  -->
+                <div id="divOSDTip" class="alert alert-danger  alert-dismissible fade in" style="display:none" role="alert">   
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">        
+                    <span aria-hidden="true">x</span>   
+                </button>I
+                </div>
+            </div>
+
+            <h4>Basic Information</h4>
+            <hr />
+            <div id="divBaiscInfo">
+                <div class="form-group">
+                    <span class="span-label">Device Path</span>
+                    <span id="lblDevicePath" class="span-label">--</span>
+                </div>
+                <div class="form-group">
+                    <span class="span-label">Drive Status</span>
+                    <span id="lblStatus" class="span-label">--</span>
+                </div>
+                <div class="form-group">
+                    <span class="span-label">Device Model:</span>
+                    <span id="lblFamily" class="span-label">--</span>
+                </div>
+                <div class="form-group">
+                    <span class="span-label">Serial Number:</span>
+                    <span id="lblSeriesNumber" class="span-label">--</span>
+                </div>
+                <div class="form-group">
+                    <span class="span-label">Firmware Version:</span>
+                    <span id="lblFirmware" class="span-label">--</span>
+                </div>
+            </div>
+
+            <div id="divSmartInfoContainer" style="display:none">
+                <h4>S.M.A.R.T Data</h4>
+                <hr />
+                <div id="divSmartInfo">
+                    <table id="tSmartInfo" class="table table-striped">
+                          <thead>
+                                <tr>
+                                    <th>Counter</th>
+                                    <th>Value</th>
+                                </tr>
+                          </thead>
+                         <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div style="width:100%;height:50px;display:block">
+            </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src='{{ STATIC_URL }}dashboard/js/vsm.spin.js' type='text/javascript' charset='utf-8'></script>
+    <script src="{{ STATIC_URL }}dashboard/js/dialog.js" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ STATIC_URL }}dashboard/js/devicemgmt.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

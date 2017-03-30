@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block body_id %}splash{% endblock %}
+
+{% block content %}
+  {% include 'auth/_login.html' %}
+{% endblock %}
+
+
+{% block js %}
+    {{ block.super }}
+     <script src="{{ STATIC_URL }}dashboard/js/login.js"  type="text/javascript" charset="utf-8"></script>
+{% endblock %}

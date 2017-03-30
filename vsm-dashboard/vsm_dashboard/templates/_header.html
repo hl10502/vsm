@@ -1,0 +1,7 @@
+{% load i18n %}
+<h1 class="brand"><a href="/dashboard/home/">Dashboard</a></h1>
+<div id="user_info" class="pull-right">
+  <span>{% trans "Logged in as" %}: {{ request.user.username }}</span>
+  <a href="{% url 'logout' %}">{% trans "Sign Out" %}</a>
+  {% include "horizon/common/_region_selector.html" %}
+</div>

@@ -1,0 +1,279 @@
+#framework
+{
+    text-align: left;
+    margin-left:5px;
+}
+
+
+#divMain{
+    text-align: left;
+    width: 1024px;
+    height: auto;
+}
+
+
+/**
+ * VSM Info module
+ */
+#divVSMVersion{
+    width: 250px;
+}
+
+#divVSMVersionContent{
+    height: 200px;
+}
+
+
+/**
+ * cluster module
+ */
+#divCluster{
+    width: 500px;
+}
+
+#divClusterContent{
+    height: 130px;
+    overflow-y:auto;
+}
+
+/*#lblClusterName{
+    font-size: 20px;
+}*/
+
+#btnClusterTip {
+    margin-bottom: 10px;
+}
+
+#divClusterNote{
+    width: 65%;
+    float: left;
+}
+
+#divCapacity{
+    width: 35%;
+    height: 200px;
+    float:left;
+}
+
+#divClusterGauge{
+    height: 140px;
+}
+
+#divCapacityInfo{
+    padding-left: 10px;
+}
+
+/**
+ * storage module
+ */
+#divStorage{
+    width: 250px;
+}
+
+#divStorageContent{
+    height: 200px;
+}
+
+#tStorage{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#trStorageLabel>td{
+    width: 80px;
+    height: 40px;
+    /*border: 1px solid #ccc;*/
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#trStorageMark{
+    height: 40px;
+}
+
+/**
+ * OSD module
+ */
+#divOSD{
+    width: 250px;
+    margin-top: -20px;
+}
+
+#divOSDContent{
+    height: 290px;
+}
+
+
+#tOSD>tbody>tr>td{
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#tDeviceCapacity{
+    margin-left: 10px;
+}
+
+#trDeviceCapacity>td{
+    width: 80px;
+    height: 30px;
+    /*border: 1px solid #ccc;*/
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/**
+ * Monitor module
+ */
+#divMonitor{
+    width: 250px;
+    margin-top: -20px;
+}
+
+#divMonitorContent{
+    height: 290px;
+}
+
+#divMonitorRect{
+    margin-top:25px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    height:120px;
+    overflow-y:auto;
+}
+
+
+/**
+ * MDS module
+ */
+#divMDS{
+    width: 250px;
+    margin-top: -20px;
+}
+
+#divMDSContent{
+    height: 290px;
+}
+
+#divMDSRect{
+    height:160px;
+    overflow-y:auto;
+    /*border:1px solid green;*/
+}
+ 
+#tMDS>tbody>tr>td{
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    /*border:1px solid #ccc;*/
+}
+/**
+ * PG module
+ */
+
+#divPGContent{
+    height: 290px;
+}
+
+#divPG{
+    width: 250px;
+    margin-top: -20px;
+}
+
+#divPGRect{
+    width:90%;
+    height:219px;
+}
+
+
+/**
+ * IOPs module
+ */
+#divIOPs{
+    width: 500px;
+    margin-top: 0px;
+}
+
+/**
+ * Latency module
+ */
+#divLatency{
+    width: 500px;
+    margin-top: 0px;
+}
+
+/**
+ * Bandwidth module
+ */
+#divBandwidth{
+    width: 500px;
+    margin-top: -20px;
+}
+
+/**
+ * CPU module
+ */
+#divCPU{
+    width: 500px;
+    margin-top: -20px;
+}
+
+
+
+.cluster-tip{
+    padding: 6px 12px;
+    /*width: 75px;*/
+    height: 30px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.cluster-tip:hover{
+    cursor: default;
+}
+
+.cluster-tip-health{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.cluster-tip-warning{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+
+}
+
+.cluster-tip-error{
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
+#imgExpandCollapse{
+    cursor: pointer;
+}
+
+#imgExpandCollapse:hover{
+    cursor: pointer;
+}
+
+#tCapacityInfo{
+    margin-left: 10px;
+}
+
+#tCapacityInfo tr td{
+    width: 70px;
+}
+
+

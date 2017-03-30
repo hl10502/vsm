@@ -1,0 +1,88 @@
+
+<!-- Copyright 2014 Intel Corporation, All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the"License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ --> 
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Manage Zones" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Manage Zones") %}
+  <link href="{{ STATIC_URL }}dashboard/css/zone.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}dashboard/css/zTreeStyle.css" rel="stylesheet">
+
+{% endblock page_header %}
+
+{% block main %}
+{% csrf_token %}
+
+<div id="divFramework">
+    <div id="divCrushmap">
+        <div id="divCrushmapTree" class="ztree"></div>
+    </div>
+
+	<div id="divZoneForm" >
+		<div id="divBaseForm">
+            <div id="divZoneFormLeft">
+                <div class="control-group form-field clearfix required">
+                    <label>Zone Name:</label>
+                    <span class="required-star">*</span>
+                    <span class="help-block"></span>
+                    <div class="input">
+                        <input id="txtZoneName" maxlength="255"  type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="control-group form-field clearfix required">
+                    <label>Parent Zone Name:</label>
+                    <span class="help-block"></span>
+                    <div class="input">
+                        <input id="txtParentName" type="text" class="form-control" readOnly>
+                        <input id="hfParentID"  type="hidden" class="form-control" readOnly>
+                    </div>
+                </div>
+
+                <div class="control-group form-field clearfix required" >
+                    <label>Parent Zone Type:</label>
+                    <span class="help-block"></span>
+                    <div class="input">
+                        <input id="txtTypeName" type="text" class="form-control" readOnly>
+                        <input id="hfTypeID"  type="hidden" class="form-control" readOnly>
+                    </div>
+                </div>
+            </div>
+            <div id="divZoneFormRight">
+                <div class="control-group form-field clearfix required">
+                    <h3>{% trans "Notes" %}:</h3>
+                    <p>Click on left tree to select parent Zone.</p>
+                </div>
+            </div>
+        </div>
+        <div id="divFormOptions" class="vsm-options-bar">
+        	<button id="btnAddZone" class="btn btn-primary" onclick="addZone()">Add</button>
+        </div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}dashboard/js/jquery.ztree.all-3.5.min.js"></script>
+    <script src="{{ STATIC_URL }}dashboard/js/zone.js"></script> 
+{% endblock %}
+
+

@@ -1,0 +1,43 @@
+{% load url from future %}
+{% load datepicker_locale from horizon %}
+{% datepicker_locale as DATEPICKER_LOCALE %}
+
+<!--bootstrap-->
+<script src="{{ STATIC_URL }}lib/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}lib/bootstrap-datepicker.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- common -->
+<script src="{{ STATIC_URL }}dashboard/js/loading.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}dashboard/js/message.js" type="text/javascript" charset="utf-8"></script>
+
+<!--jquery lib-->
+<script src="{{ STATIC_URL }}lib/spin.js" type="text/javascript" charset="utf-8"></script>
+<script src='{{ STATIC_URL }}lib/jquery.quicksearch.js' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}lib/jquery.tablesorter.js' charset='utf-8'></script>
+{#<script src='{{ STATIC_URL }}lib/jquery-ui.js' charset='utf-8'></script>#}
+<script src="{{ STATIC_URL }}lib/jquery.bootstrap.wizard.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}lib/hogan.js" type="text/javascript" charset="utf-8"></script>
+
+<!--horizon-->
+<script src='{{ STATIC_URL }}horizon/js/horizon.accordion_nav.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.communication.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.forms.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.formset_table.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.instances.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.messages.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.modals.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.quota.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.tables.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.tables_inline_edit.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.tabs.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.templates.js' type='text/javascript' charset='utf-8'></script>
+{#<script src='{{ STATIC_URL }}horizon/js/horizon.users.js' type='text/javascript' charset='utf-8'></script>#}
+<script src='{{ STATIC_URL }}horizon/js/horizon.membership.js' type='text/javascript' charset='utf-8'></script>
+<script src='{{ STATIC_URL }}horizon/js/horizon.networktopology.js' type='text/javascript' charset='utf-8'></script>
+
+{% include "horizon/client_side/templates.html" %}
+
+<script type='text/javascript' charset='utf-8'>
+  // Call init on DOM ready.
+  $(document).ready(horizon.init);
+</script>

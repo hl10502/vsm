@@ -1,0 +1,26 @@
+/**
+ * OSD module
+ */
+#tOSD>tbody>tr>td{
+    height: 45px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/**
+ * Filter OSD status
+ */
+#divFilterStatusBar{
+	width: 100%;
+	height: 30px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 15px
+}
+
+#chkFilter{
+	margin-left: 20px;
+	margin-top: 8px;
+}

@@ -1,0 +1,232 @@
+
+h1.brand a{
+    width: 300px;
+}
+
+
+.vsm-block{
+    height: auto;
+    overflow: hidden;
+    text-align:center;
+    float: left;
+}
+
+.vsm-block-content{
+    text-align:left;
+    padding:15px 10px;
+    border-radius:5px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    margin:5px;
+    margin-top: 0px;
+    box-shadow: 2px 2px 3px #aaa;
+ }
+
+
+/**
+ * any labels
+ */
+.vsm-block-title{
+    top:20px;
+    z-index:100;
+    position:relative;
+    display: inline-block;
+    background-color:white;
+    margin-right: auto;
+    margin-left: auto;
+    /*font-family: "Ubuntu, Arial,libra sans, sans-serif";*/
+    font-size: 18px;
+}
+
+/**
+ * block link: link to any other pages;
+ */
+.vsm-block-link{
+    color:black;
+}
+
+    .vsm-block-link:hover{
+         color:black;
+         text-decoration: none;
+    }
+
+
+/**
+ * block chart
+ */
+.vsm-block-chart{
+    height:300px ;
+}
+
+.vsm-chart-rect{
+    width:100%;
+    height:200px;
+    margin-left:10px;
+}
+
+
+/**
+ * rect
+ */
+.vsm-rect{
+    width: 55px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #0062a8;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    border-radius: 5px;
+    color:#ffffff;
+    margin-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.vsm-rect-monitor{
+    float: left;
+    margin: 5px;
+}
+
+.vsm-rect-green{
+   background-color: green;
+}
+
+.vsm-rect-gray{
+    background-color: gray;
+}
+
+.vsm-rect-red{
+    background-color: red;
+}
+
+.vsm-rect-orange{
+    background-color: orange;
+}
+
+.vsm-rect-blue{
+    background-color: #0062a8;
+}
+
+
+/**
+ * table and anything
+ */
+.td-60{
+    width: 60px;
+}
+.td-150{
+    width: 150px;
+}
+
+.td-100{
+    width: 100px;
+}
+
+
+/**
+ * alert
+ */
+.alert{
+    width: auto;
+}
+
+
+.vsm-status-icon{
+    position: relative;
+    top: 50px;
+    right: 10px;
+    float: right;
+}
+
+
+.vsm-label-90{
+    min-width: 90px;
+    display:inline-block;
+    margin-right: 10px;
+}
+
+.vsm-label-60{
+    min-width: 60px;
+    display:inline-block;
+    margin-right: 10px;
+}
+
+
+.info-link{
+    float: right;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.info-link:hover{
+    text-decoration: none;
+}
+
+
+.vsm-spin{
+    width: 50px;
+    height: 50px;
+    top: 150px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spin-modal{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    background-color: #000; 
+    display: none;
+}
+
+
+.vsm-summary{
+    width: 400px;
+    height: auto;
+    /*border: 1px solid #ccc;*/
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.vsm-summary h3{
+    font-weight: normal;
+    font-size: 24px;
+    margin: 10px;
+}
+
+.vsm-summary-content{
+    width: 400px;
+    height: auto;
+    padding: 10px;
+}
+
+.vsm-summary-content .form-group label{
+    min-width: 140px;
+}
+
+
+.vsm-options-bar{
+    width: 100%;
+    height: auto;
+    text-align: right;
+    /*border: 1px solid #ccc;*/
+}
+
+.vsm-options-bar button{
+    margin-left: 10px;
+}
+
+.spin-content{
+    height:100px;
+    width:150px;
+    top:250px;
+    margin-left: auto;
+    margin-right: auto;
+}
